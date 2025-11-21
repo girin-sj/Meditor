@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/KAKAOBIGSANS-BOLD.ttf",
+      "sha1": "a88b93846895a7346d456f278fb6b70216940577"
+    },
+    {
+      "path": "src/assets/fonts/KAKAOBIGSANS-EXTRABOLD.ttf",
+      "sha1": "936ad7f2605e1698919c8a12cf2ecc938c2f77ef"
+    },
+    {
+      "path": "src/assets/fonts/KAKAOBIGSANS-REGULAR.ttf",
+      "sha1": "85fb3d16585ecdec7d632d6fd50071d753777706"
+    }
+  ]
+}

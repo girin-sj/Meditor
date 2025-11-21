@@ -5,12 +5,16 @@
  * @format
  */
 
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
-import HomeScreen from './screens/home/HomeScreen';
+import { StatusBar, Text, useColorScheme } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { NavigationContainer } from '@react-navigation/native';
+import RootNavigator from './navigation/RootNavigator';
+
+// 전역 기본 폰트 설정
+if (Text.defaultProps == null) {
+  Text.defaultProps = {};
+}
+Text.defaultProps.style = { fontFamily: 'KAKAOBIGSANS-REGULAR' };
 
 function App() {
   const isDarkMode = useColorScheme() === 'dark';
@@ -18,23 +22,11 @@ function App() {
   return (
     <SafeAreaProvider>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
+      <NavigationContainer>
+        <RootNavigator />
+      </NavigationContainer>
     </SafeAreaProvider>
   );
 }
-
-function AppContent() {
-  return (
-    <View style={styles.container}>
-      <HomeScreen />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default App;
