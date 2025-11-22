@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { 
+  IcUser,
   IcContactsImg, 
   IcTreatSummary, 
   IcBell,
@@ -29,13 +30,14 @@ function UserScreen() {
               <Text style={styles.contactBtnText}>연락처 연동하기</Text>
             </Pressable>
           </View>
-          <IcContactsImg style={{ marginLeft: 8 }} />
+          <IcContactsImg style={{ marginLeft: 8, alignSelf: "flex-end" }} />
         </View>
 
         <View style={styles.section}>
           <Pressable style={styles.row}>
-            //프로필 이미지 넣어야함
+            <IcUser />
             <Text style={styles.profilerowText}>제임스</Text>
+            <Text style={styles.profileState}>프리미엄</Text>
             <IcRightBlack />
           </Pressable>
         </View>
@@ -100,7 +102,7 @@ function UserScreen() {
           <Text style={styles.sectionTitle}>기타</Text>
 
           <Pressable style={styles.row}>
-            <Text style={styles.rowText}>오픈소스 라이선스</Text>
+            <Text style={styles.rowTextNoIcon}>오픈소스 라이선스</Text>
             <IcRightBlack />
           </Pressable>
 
@@ -113,7 +115,7 @@ function UserScreen() {
           </Pressable>
 
           <Pressable style={styles.row}>
-            <Text style={styles.rowText}>로그아웃</Text>
+            <Text style={styles.rowTextNoIcon}>로그아웃</Text>
             <IcRightBlack />
           </Pressable>
         </View>
@@ -148,25 +150,26 @@ const styles = StyleSheet.create({
   },
   contactBtn: {
     backgroundColor: "#E8EFF7",
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 25,
+    borderRadius: 20,
     alignSelf: "flex-start",
   },
   contactBtnText: {
-    color: "#1E56A0",
+    color: "#000000",
     fontWeight: "600",
   },
   section: {
     backgroundColor: "#FFFFFF",
     borderRadius: 12,
-    paddingVertical: 14,
+    paddingVertical: 5,
     marginBottom: 18,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    paddingHorizontal: 14,
+    paddingVertical: 5,
+    paddingHorizontal: 20,
   },
   row: {
     flexDirection: "row",
@@ -176,25 +179,36 @@ const styles = StyleSheet.create({
   },
   profilerowText: {
     flex: 1,
-    fontSize: 23,
+    fontSize: 20,
     marginLeft: 12,
     fontWeight: "bold",
+  },
+  profileState: {
+    fontSize: 10,
+    fontWeight: "bold",
+    backgroundColor: "#1E56A0",
+    borderRadius: 8,
+    color: "#FFFFFF",
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    marginRight: 160,
   },
   rowText: {
     flex: 1,
     fontSize: 15,
     marginLeft: 12,
   },
+  rowTextNoIcon: {
+    flex: 1,
+    fontSize: 15,
+  },
   versionMain: {
     fontSize: 15,
-    fontWeight: "bold",
     marginBottom: 4,
-    marginLeft: 12,
   },
   versionSub: {
     fontSize: 12,
     color: "#777",
-    marginLeft: 12,
   },
 });
 
