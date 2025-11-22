@@ -1,3 +1,6 @@
+// Common
+export { default as IcPlus } from './ic_plus.svg';
+
 // Auth
 export { default as IcPwClose } from './ic_pw_close.svg';
 export { default as IcPwOpen } from './ic_pw_open.svg';
