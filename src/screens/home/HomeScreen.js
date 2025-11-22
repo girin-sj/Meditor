@@ -1,17 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { IcRightWhite, IcBell } from '@/assets/icons';
 
 function HomeScreen({ navigation }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <View style={styles.bellWrapper}>
           <IcBell />
           <View style={styles.notificationBadge} />
         </View>
       </View>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.adContainer}
         activeOpacity={0.7}
         onPress={() => navigation.navigate('RecordScreen')}
@@ -25,7 +26,7 @@ function HomeScreen({ navigation }) {
       </View>
       </TouchableOpacity>
       <View style={styles.contents}></View>
-    </View>
+    </SafeAreaView>
   );
 }
 
