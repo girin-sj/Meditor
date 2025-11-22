@@ -1,7 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { IcRightWhite, IcBell, IcRecentTreat } from '@/assets/icons';
+import {
+  IcRightWhite,
+  IcBell,
+  IcRecentTreat,
+  IcNote,
+  IcRightBlack,
+} from '@/assets/icons';
 import GradiBtn from '@/components/GradiBtn';
 
 function HomeScreen({ navigation }) {
@@ -48,11 +54,29 @@ function HomeScreen({ navigation }) {
           title={'진료 시작'}
           onPress={() => navigation.navigate('RecordScreen')}
         />
-        <View style={styles.treatListContainer}></View>
+        <View style={styles.treatListContainer}>
+          <TreatItem dateTxt={'10/31 (금)'} />
+          <TreatItem dateTxt={'10/16 (목)'} />
+          <TreatItem dateTxt={'09/22 (월)'} isLast />
+        </View>
       </View>
     </SafeAreaView>
   );
 }
+
+const TreatItem = ({ dateTxt, isLast }) => {
+  return (
+    <View style={[styles.treatItem, !isLast && styles.treatItemBorder]}>
+      <View style={styles.treatLeft}>
+        <View style={styles.treatIconWrapper}>
+          <IcNote />
+        </View>
+        <Text style={styles.treatItemText}>{dateTxt} 진료내용</Text>
+      </View>
+      <IcRightBlack />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -100,12 +124,12 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     alignItems: 'center',
-    padding: 32,
-    gap: 16,
+    paddingHorizontal: 32,
+    paddingVertical: 16,
+    justifyContent: 'space-between',
   },
   topContents: {
     width: '100%',
-    gap: 8,
     paddingHorizontal: 8,
   },
   titleContainer: {
@@ -135,7 +159,34 @@ const styles = StyleSheet.create({
   },
   treatListContainer: {
     width: '100%',
-    backgroundColor: '#888',
+  },
+  treatItem: {
+    flexDirection: 'row',
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  treatItemBorder: {
+    borderBottomWidth: 1,
+    borderBottomColor: '#E4E6EB',
+  },
+  treatLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 18,
+  },
+  treatItemText: {
+    fontFamily: 'KAKAOBIGSANS-BOLD',
+    fontSize: 16,
+  },
+  treatIconWrapper: {
+    backgroundColor: '#E6EFF6',
+    width: 48,
+    height: 48,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 50,
   },
 });
 
