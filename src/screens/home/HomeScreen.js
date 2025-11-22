@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { IcRightWhite, IcBell } from '@/assets/icons';
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -11,6 +11,11 @@ function HomeScreen() {
           <View style={styles.notificationBadge} />
         </View>
       </View>
+      <TouchableOpacity 
+        style={styles.adContainer}
+        activeOpacity={0.7}
+        onPress={() => navigation.navigate('RecordScreen')}
+      >
       <View style={styles.adContainer}>
         <Text style={styles.adTxt}>
           오늘 하루 수고하신 부모님께,
@@ -18,6 +23,7 @@ function HomeScreen() {
         </Text>
         <IcRightWhite />
       </View>
+      </TouchableOpacity>
       <View style={styles.contents}></View>
     </View>
   );
