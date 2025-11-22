@@ -7,9 +7,15 @@ export { default as IcKakao } from './ic_kakao.svg';
 export { default as IcRightWhite } from './ic_right_white.svg';
 export { default as IcBell } from './ic_bell.svg';
 export { default as IcRecentTreat } from './ic_recent_treatment.svg';
+
+// Record
 export { default as IcRecordStart } from './ic_record_start.svg';
 export { default as IcRecordStop } from './ic_record_stop.svg';
 export { default as IcBack } from './ic_back.svg';
+
+// Summary
+export { default as IcVoiceRead } from './ic_voice_read.svg';
+export { default as IcShare } from './ic_share.svg';
 
 // Bottom Tab
 export { default as IcHome } from './ic_home.svg';
