@@ -71,7 +71,10 @@ const TreatItem = ({ dateTxt, isLast }) => {
         <View style={styles.treatIconWrapper}>
           <IcNote />
         </View>
-        <Text style={styles.treatItemText}>{dateTxt} 진료내용</Text>
+        <Text style={styles.treatItemText}>
+          {dateTxt}
+          {'  '}진료내용
+        </Text>
       </View>
       <IcRightBlack />
     </View>
@@ -125,12 +128,13 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     paddingHorizontal: 32,
-    paddingVertical: 16,
+    paddingVertical: 24,
     justifyContent: 'space-between',
   },
   topContents: {
     width: '100%',
     paddingHorizontal: 8,
+    gap: 8,
   },
   titleContainer: {
     gap: 8,
@@ -182,8 +186,8 @@ const styles = StyleSheet.create({
   },
   treatIconWrapper: {
     backgroundColor: '#E6EFF6',
-    width: 48,
-    height: 48,
+    width: 42,
+    height: 42,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 50,
