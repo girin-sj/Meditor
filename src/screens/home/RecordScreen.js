@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from "react-native";
+import { View, Text, Pressable, StyleSheet, Dimensions } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { IcRecordStart, IcRecordStop, IcBack } from "@/assets/icons";
 
 const { width } = Dimensions.get("window");
@@ -44,13 +45,14 @@ function RecordScreen({ navigation }) {
     <View style={[styles.container, 
         { backgroundColor: isRecording ? "#1b3e83ff" : "#ffffff"  }
     ]}>
+    <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.exitButton} onPress={handleExit}>
+        <Pressable style={styles.exitButton} onPress={handleExit}>
           <IcBack color={isRecording ? "#ffffff" : "#1b3e83ff"} />
           <Text style={[styles.exitText,
             { color: isRecording ? "#ffffff" : "#1b3e83ff" }
           ]}>나가기</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
       
       <View style={styles.centerWrapper}>
@@ -61,12 +63,12 @@ function RecordScreen({ navigation }) {
             ? "진료가 끝나면\n 하단 버튼을 눌러주세요"
             : "하단 버튼을 눌러\n진료를 기록하세요"}
         </Text>
-        <TouchableOpacity
+        <Pressable
           onPress={isRecording ? handleStopRecord : handleStartRecord}
           activeOpacity={0.7}
         >
           {isRecording ? <IcRecordStop /> : <IcRecordStart />}
-        </TouchableOpacity>
+        </Pressable>
 
         {isRecording ? (
           <>
@@ -82,6 +84,7 @@ function RecordScreen({ navigation }) {
         )}
 
       </View>
+      </SafeAreaView>
     </View>
   );
 }
@@ -89,9 +92,7 @@ function RecordScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#ffffff",
         paddingHorizontal: 16,
-        paddingTop: 60,
     },
     header: {
         width: "100%",

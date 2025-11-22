@@ -1,34 +1,33 @@
 import React from "react";
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { IcShare, IcVoiceRead, IcRightWhite } from "@/assets/icons";
 
 function SummaryScreen({ navigation }) {
     return (
+        <SafeAreaView style={styles.wrap} edges={['top', 'bottom']}>
         <ScrollView style={styles.container}>
             <View style={styles.topRow}>
                 <Text style={styles.title}>진료 요약</Text>
-                <TouchableOpacity>
+                <Pressable>
                     <IcShare />
-                </TouchableOpacity>
+                </Pressable>
             </View>
 
             <View style={styles.headerBox}>
                 <Text style={styles.headerSmall}>유착성 관절낭염(Frozen shoulder)</Text>
-
                 <View style={styles.headerRow}>
                     <Text style={styles.headerTitle}>오십견 진료 요약</Text>
-
-                    <TouchableOpacity>
+                    <Pressable>
                         <View style={styles.voiceRow}>
                             <IcVoiceRead />
                             <Text style={styles.voiceText}>음성으로 듣기</Text>
                         </View>
-                    </TouchableOpacity>
+                    </Pressable>
                 </View>
             </View>
 
             <View style={styles.sectionWrap}>
-
                 <Text style={styles.sectionTitle}>진단 소견</Text>
                 <View style={styles.sectionBox}>
                     <Text style={styles.describe}>• 어깨 운동 범위 제한</Text>
@@ -36,7 +35,6 @@ function SummaryScreen({ navigation }) {
                 </View>
 
                 <Text style={styles.sectionTitle}>처방 약물</Text>
-
                 <View style={styles.sectionBox}>
                     <Text style={styles.bold}>근육 이완제(Persion 50mg)</Text>
                     <Text style={styles.describe}>어깨 근육을 풀어주는 약</Text>
@@ -51,7 +49,6 @@ function SummaryScreen({ navigation }) {
                 </View>
 
                 <Text style={styles.sectionTitle}>치료 및 관리</Text>
-
                 <View style={styles.sectionBox}>
                     <Text style={styles.describe}>• 매일 꾸준한 어깨 스트레칭</Text>
                     <Text style={styles.describe}>• 물리 치료 병행 권장</Text>
@@ -59,19 +56,23 @@ function SummaryScreen({ navigation }) {
                     <Text style={styles.describe}>(단, 6개월 이상 증상 지속 시 수술 고려)</Text>
                 </View>
             </View>
-            
-            <TouchableOpacity 
-                style={styles.adContainer}
-                activeOpacity={0.7}
-                onPress={() => navigation.navigate('ScriptScreen')}>
-                    <Text style={styles.adTxt}>어떤 대화가 오갔나요? <Text style={styles.adTxtBold}>전문 보기</Text></Text>
-                    <IcRightWhite />
-            </TouchableOpacity>
         </ScrollView>
+        <Pressable 
+            style={styles.adContainer}
+            activeOpacity={0.7}
+            onPress={() => navigation.navigate('ScriptScreen')}>
+            <Text style={styles.adTxt}>어떤 대화가 오갔나요? <Text style={styles.adTxtBold}>전문 보기</Text></Text>
+            <IcRightWhite />
+        </Pressable>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
+    wrap: {
+        flex: 1,
+        backgroundColor: "#fff",
+    },
     container: {
         flex: 1,
         backgroundColor: "#fff",
@@ -148,13 +149,15 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     adContainer: {
+        position: "absolute",
+        bottom: 0,
+        width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
         backgroundColor: "#163172",
         paddingVertical: 10,
         paddingHorizontal: 20,
-        marginTop: 10,
     },
     adTxt: {
         color: "#FFFFFF",

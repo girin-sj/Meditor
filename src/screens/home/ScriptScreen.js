@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { IcBack } from "@/assets/icons";
 
 function ScriptScreen({ navigation }) {
@@ -8,20 +9,20 @@ function ScriptScreen({ navigation }) {
     };
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <View style={styles.toRow}>
                 <Text style={styles.text}>전문 보기</Text>
-                <TouchableOpacity
+                <Pressable
                     style={styles.exitButton}
                     onPress={handleExit}>
                     <IcBack />
-                </TouchableOpacity>
+                </Pressable>
             </View>
 
             <View style={styles.contentBox}>
                 
             </View>
-        </View>
+        </SafeAreaView>
     );
 }
 
@@ -34,7 +35,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        marginTop: 50,
         paddingHorizontal: 20,
     },
     text: {
