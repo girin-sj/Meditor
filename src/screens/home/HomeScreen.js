@@ -166,8 +166,7 @@ const styles = StyleSheet.create({
   },
   treatItem: {
     flexDirection: 'row',
-    paddingVertical: 14,
-    paddingHorizontal: 16,
+    padding: 16,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
