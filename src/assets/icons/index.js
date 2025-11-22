@@ -26,3 +26,14 @@ export { default as IcHomeOn } from './ic_home_on.svg';
 export { default as IcCalendarOn } from './ic_calendar_on.svg';
 export { default as IcContactsOn } from './ic_contacts_on.svg';
 export { default as IcUserOn } from './ic_user_on.svg';
+
+// Mypage
+export { default as IcRightBlack } from './ic_right_black.svg';
+export { default as IcContactsImg} from './ic_contact_img.svg';
+export { default as IcTreatSummary} from './ic_treatsummary.svg';
+export { default as IcSetting} from './ic_setting.svg';
+export { default as IcNotice} from './ic_notice.svg';
+export { default as IcCustomer} from './ic_customer.svg';
+export { default as IcOpinion} from './ic_opinion.svg';
+export { default as IcMore} from './ic_more.svg';
+export { default as IcInfomation} from './ic_information.svg';
