@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native";
 import { IcShare, IcVoiceRead, IcRightWhite } from "@/assets/icons";
 
-function SummaryScreen() {
+function SummaryScreen({ navigation }) {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.topRow}>
@@ -60,7 +60,10 @@ function SummaryScreen() {
                 </View>
             </View>
             
-            <TouchableOpacity style={styles.adContainer}>
+            <TouchableOpacity 
+                style={styles.adContainer}
+                activeOpacity={0.7}
+                onPress={() => navigation.navigate('ScriptScreen')}>
                     <Text style={styles.adTxt}>어떤 대화가 오갔나요? <Text style={styles.adTxtBold}>전문 보기</Text></Text>
                     <IcRightWhite />
             </TouchableOpacity>
