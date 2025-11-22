@@ -17,7 +17,11 @@ function RecordScreen({ navigation }) {
 
   const handleStopRecord = () => {
     setIsRecording(false);
-    setSeconds(0);  // 타이머 리셋
+    setSeconds(0);
+
+    navigation.navigate("SummaryScreen", {
+        recordedDuration: seconds,
+    });
   };
 
   useEffect(() => {
@@ -38,20 +42,20 @@ function RecordScreen({ navigation }) {
 
   return (
     <View style={[styles.container, 
-        { backgroundColor: isRecording ? "#2F6BDF" : "#ffffff"  }
+        { backgroundColor: isRecording ? "#1b3e83ff" : "#ffffff"  }
     ]}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.exitButton} onPress={handleExit}>
-          <IcBack color={isRecording ? "#ffffff" : "#2F6BDF"} />
+          <IcBack color={isRecording ? "#ffffff" : "#1b3e83ff"} />
           <Text style={[styles.exitText,
-            { color: isRecording ? "#ffffff" : "#2F6BDF" }
+            { color: isRecording ? "#ffffff" : "#1b3e83ff" }
           ]}>나가기</Text>
         </TouchableOpacity>
       </View>
       
       <View style={styles.centerWrapper}>
         <Text style={[styles.mainTitle, 
-            { color: isRecording ? "#ffffff" : "#1B3062" }
+            { color: isRecording ? "#ffffff" : "#1b3e83ff" }
         ]}>
           {isRecording
             ? "진료가 끝나면\n 하단 버튼을 눌러주세요"
@@ -67,7 +71,7 @@ function RecordScreen({ navigation }) {
         {isRecording ? (
           <>
             <Text style={[styles.subText, 
-                {color: isRecording ? "#ffffff" : "#1B3062"},
+                {color: isRecording ? "#ffffff" : "#1b3e83ff"},
                 { marginTop: 48 }]}>메디터가 진료 내용을 {"\n"} 기록하고 있어요</Text>
             <Text style={styles.timer}>{formatTime(seconds)}</Text>
           </>
@@ -83,53 +87,53 @@ function RecordScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ffffff",
-    paddingHorizontal: 16,
-    paddingTop: 60,
-  },
-  header: {
-    width: "100%",
-    alignItems: "flex-end",
-  },
-  exitButton: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  exitText: {
-    fontSize: 22,
-    fontWeight: "600",
-    color: "#2F6BDF",
-    marginLeft: 6,
-  },
-  centerWrapper: {
-    marginTop: 80,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  mainTitle: {
-    fontSize: 32,
-    fontWeight: "700",
-    color: "#1B3062",
-    textAlign: "center",
-    lineHeight: 45,
-    marginBottom: 72,
-  },
-  subText: {
-    textAlign: "center",
-    fontSize: 24,
-    fontWeight: "600",
-    color: "#1B3062",
-    lineHeight: 35,
-  },
-  timer: {
-    marginTop: 16,
-    fontSize: 24,
-    color: "#ffffff",
-    fontWeight: "600",
-    textAlign: "center",
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#ffffff",
+        paddingHorizontal: 16,
+        paddingTop: 60,
+    },
+    header: {
+        width: "100%",
+        alignItems: "flex-end",
+    },
+    exitButton: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    exitText: {
+        fontSize: 22,
+        fontWeight: "600",
+        color: "#2F6BDF",
+        marginLeft: 6,
+    },
+    centerWrapper: {
+        marginTop: 80,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    mainTitle: {
+        fontSize: 32,
+        fontWeight: "700",
+        color: "#1B3062",
+        textAlign: "center",
+        lineHeight: 45,
+        marginBottom: 72,
+    },
+    subText: {
+        textAlign: "center",
+        fontSize: 24,
+        fontWeight: "600",
+        color: "#1B3062",
+        lineHeight: 35,
+    },
+    timer: {
+        marginTop: 16,
+        fontSize: 24,
+        color: "#ffffff",
+        fontWeight: "600",
+        textAlign: "center",
+    },
 });
 
 export default RecordScreen;

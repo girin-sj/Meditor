@@ -7,6 +7,7 @@ import CalendarScreen from '../screens/calendar/CalendarScreen';
 import ContactsScreen from '../screens/contacts/ContactsScreen';
 import UserScreen from '../screens/user/UserScreen';
 import RecordScreen from '../screens/home/RecordScreen';
+import SummaryScreen from '../screens/home/SummaryScreen';
 import {
   IcHome,
   IcCalendar,
@@ -81,6 +82,7 @@ function RootNavigator() {
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Main" component={MainTabs} />
       <Stack.Screen name="RecordScreen" component={RecordScreen} />
+      <Stack.Screen name="SummaryScreen" component={SummaryScreen} />
     </Stack.Navigator>
   );
 }
