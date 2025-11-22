@@ -1,3 +1,8 @@
+// Common
+export { default as IcPlus } from './ic_plus.svg';
+export { default as IcNote } from './ic_note.svg';
+export { default as IcRightBlack } from './ic_right_black.svg';
+
 // Auth
 export { default as IcPwClose } from './ic_pw_close.svg';
 export { default as IcPwOpen } from './ic_pw_open.svg';
