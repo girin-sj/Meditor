@@ -6,6 +6,7 @@ import HomeScreen from '../screens/home/HomeScreen';
 import CalendarScreen from '../screens/calendar/CalendarScreen';
 import ContactsScreen from '../screens/contacts/ContactsScreen';
 import UserScreen from '../screens/user/UserScreen';
+import RecordScreen from '../screens/home/RecordScreen';
 import {
   IcHome,
   IcCalendar,
@@ -79,6 +80,7 @@ function RootNavigator() {
     >
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Main" component={MainTabs} />
+      <Stack.Screen name="RecordScreen" component={RecordScreen} />
     </Stack.Navigator>
   );
 }
