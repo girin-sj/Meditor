@@ -1,11 +1,24 @@
 package com.meditor
 
+import android.os.Bundle
+import android.view.View
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 
 class MainActivity : ReactActivity() {
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+
+    // 네비게이션 바 숨기기 (Immersive Sticky Mode)
+    window.decorView.systemUiVisibility = (
+      View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+      or View.SYSTEM_UI_FLAG_FULLSCREEN
+      or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+    )
+  }
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule

@@ -2,6 +2,7 @@
 export { default as IcPlus } from './ic_plus.svg';
 export { default as IcNote } from './ic_note.svg';
 export { default as IcRightBlack } from './ic_right_black.svg';
+export { default as IcPersonOn } from './ic_person_on.svg';
 
 // Auth
 export { default as IcPwClose } from './ic_pw_close.svg';
@@ -41,3 +42,14 @@ export { default as IcCustomer } from './ic_customer.svg';
 export { default as IcOpinion } from './ic_opinion.svg';
 export { default as IcMore } from './ic_more.svg';
 export { default as IcInfomation } from './ic_information.svg';
+
+// Contact
+export { default as IcPersonOff } from './ic_person_off.svg';
+export { default as IcReceptionOn } from './ic_reception_on.svg';
+export { default as IcReceptionOff } from './ic_reception_off.svg';
+export { default as IcSearch } from './ic_search.svg';
+export { default as IcHeartFull } from './ic_heart_full.svg';
+export { default as IcHeartEmpty } from './ic_heart_empty.svg';
+
+// ContactPlusModal
+export { default as IcCloseWhite } from './ic_close_white.svg';
