@@ -27,33 +27,38 @@ function HomeScreen({ navigation }) {
         <IcRightWhite />
       </Pressable>
       <View style={styles.contents}>
-        <View style={styles.topContents}>
-          <View style={styles.titleContainer}>
-            <View style={styles.titleWrapper}>
-              <IcRecentTreat />
-              <Text style={styles.titleTxt}>최근진료</Text>
+        <View style={styles.topcontentsWrapper}>
+          <View style={styles.topContents}>
+            <View style={styles.titleContainer}>
+              <View style={styles.titleWrapper}>
+                <IcRecentTreat />
+                <Text style={styles.titleTxt}>최근진료</Text>
+              </View>
+              <View>
+                <Text style={styles.subtitleTxt}>
+                  {' '}
+                  • 온찜질로 통증 완화하기
+                </Text>
+                <Text style={styles.subtitleTxt}>
+                  {' '}
+                  • 매일 가벼운 어깨 스트레칭하기
+                </Text>
+              </View>
             </View>
-            <View>
-              <Text style={styles.subtitleTxt}> • 온찜질로 통증 완화하기</Text>
-              <Text style={styles.subtitleTxt}>
-                {' '}
-                • 매일 가벼운 어깨 스트레칭하기
-              </Text>
+            <View style={styles.nextTreatWrapper}>
+              <Text style={styles.nextTreatTxt}>다음 진료일: 11/09 (일)</Text>
+              <Image
+                source={require('@/assets/images/ig_homeTreat.png')}
+                style={styles.treatImage}
+                resizeMode="cover"
+              />
             </View>
           </View>
-          <View style={styles.nextTreatWrapper}>
-            <Text style={styles.nextTreatTxt}>다음 진료일: 11/09 (일)</Text>
-            <Image
-              source={require('@/assets/images/ig_homeTreat.png')}
-              style={styles.treatImage}
-              resizeMode="cover"
-            />
-          </View>
+          <GradiBtn
+            title={'진료 시작'}
+            onPress={() => navigation.navigate('RecordScreen')}
+          />
         </View>
-        <GradiBtn
-          title={'진료 시작'}
-          onPress={() => navigation.navigate('RecordScreen')}
-        />
         <View style={styles.treatListContainer}>
           <TreatItem dateTxt={'10/31 (금)'} />
           <TreatItem dateTxt={'10/16 (목)'} />
@@ -129,7 +134,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 32,
     paddingVertical: 24,
-    justifyContent: 'space-between',
+    justifyContent: 'center',
+    gap: 32,
+  },
+  topcontentsWrapper: {
+    width: '100%',
+    gap: 18,
   },
   topContents: {
     width: '100%',
