@@ -19,6 +19,7 @@ import {
   IcContactsOn,
   IcUserOn,
 } from '@/assets/icons';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,10 +27,16 @@ const Tab = createBottomTabNavigator();
 function MainTabs() {
   return (
     <Tab.Navigator
-      screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarStyle: {
+      screenOptions={({ route }) => {
+        const routeName = getFocusedRouteNameFromRoute(route) ?? '';
+
+        return {
+          headerShown: false,
+          tabBarShowLabel: false,
+          tabBarStyle: 
+          routeName === 'RecordScreen' 
+            ? { display: 'none' }
+       : {
           height: 58,
           paddingTop: 10,
           paddingBottom: 14,
@@ -37,10 +44,11 @@ function MainTabs() {
           backgroundColor: '#F6F6F6',
         },
       }}
+    }
     >
       <Tab.Screen
         name="HomeTab"
-        component={HomeScreen}
+        component={HomeStackScreen}
         options={{
           tabBarIcon: ({ focused }) => (focused ? <IcHomeOn /> : <IcHome />),
         }}
@@ -72,6 +80,17 @@ function MainTabs() {
   );
 }
 
+function HomeStackScreen() {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="RecordScreen" component={RecordScreen} />
+      <Stack.Screen name="SummaryScreen" component={SummaryScreen} />
+      <Stack.Screen name="ScriptScreen" component={ScriptScreen} />
+    </Stack.Navigator>
+  );
+}
+
 function RootNavigator() {
   return (
     <Stack.Navigator
@@ -82,9 +101,6 @@ function RootNavigator() {
     >
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Main" component={MainTabs} />
-      <Stack.Screen name="RecordScreen" component={RecordScreen} />
-      <Stack.Screen name="SummaryScreen" component={SummaryScreen}/>
-      <Stack.Screen name="ScriptScreen" component={ScriptScreen} />
     </Stack.Navigator>
   );
 }

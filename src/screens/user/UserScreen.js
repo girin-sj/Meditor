@@ -16,7 +16,11 @@ import {
   IcRightBlack
 } from '@/assets/icons';
 
-function UserScreen() {
+function UserScreen({ navigation }) {
+  const handleLogout = () => {
+    navigation.navigate("Login");
+  }
+
   return (
     <SafeAreaView style={styles.screen} edges={['top']}>
       <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 16 }}>
@@ -35,9 +39,11 @@ function UserScreen() {
 
         <View style={styles.section}>
           <Pressable style={styles.row}>
-            <IcUser />
-            <Text style={styles.profilerowText}>제임스</Text>
-            <Text style={styles.profileState}>프리미엄</Text>
+            <View style={styles.nameRow}>
+              <IcUser />
+              <Text style={styles.profilerowText}>제임스</Text>
+              <Text style={styles.profileState}>프리미엄</Text>
+            </View>
             <IcRightBlack />
           </Pressable>
         </View>
@@ -114,7 +120,7 @@ function UserScreen() {
             <IcRightBlack />
           </Pressable>
 
-          <Pressable style={styles.row}>
+          <Pressable style={styles.row} onPress={handleLogout}>
             <Text style={styles.rowTextNoIcon}>로그아웃</Text>
             <IcRightBlack />
           </Pressable>
@@ -177,8 +183,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 12,
   },
-  profilerowText: {
+  nameRow: {
+    flexDirection: "row",
+    alignItems: "center",
     flex: 1,
+  },
+  profilerowText: {
     fontSize: 20,
     marginLeft: 12,
     fontWeight: "bold",
@@ -191,7 +201,7 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     paddingVertical: 5,
     paddingHorizontal: 10,
-    marginRight: 160,
+    marginLeft: 8,
   },
   rowText: {
     flex: 1,
