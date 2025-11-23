@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, ScrollView, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { IcShare, IcVoiceRead, IcRightWhite } from "@/assets/icons";
+import GradiBtn from "@/components/GradiBtn";
 
 function SummaryScreen({ navigation }) {
     return (
@@ -35,6 +36,12 @@ function SummaryScreen({ navigation }) {
                 </View>
 
                 <Text style={styles.sectionTitle}>처방 약물</Text>
+                <View style={styles.section}>
+                <GradiBtn
+                    title={"처방전 입력하기"}
+                    onPress={() => navigation.navigate("")}
+                />
+                </View>
                 <View style={styles.sectionBox}>
                     <Text style={styles.bold}>근육 이완제(Persion 50mg)</Text>
                     <Text style={styles.describe}>어깨 근육을 풀어주는 약</Text>
@@ -129,6 +136,10 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginTop: 4,
         marginBottom: 10,
+    },
+    section: {
+        paddingVertical: 10,
+        marginBottom: 15,
     },
     sectionBox: {
         backgroundColor: "#F6F6F6",

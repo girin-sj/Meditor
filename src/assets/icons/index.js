@@ -23,6 +23,9 @@ export { default as IcBack } from './ic_back.svg';
 export { default as IcVoiceRead } from './ic_voice_read.svg';
 export { default as IcShare } from './ic_share.svg';
 
+// Script
+export { default as IcDoctor } from './ic_doctor.svg';
+
 // Bottom Tab
 export { default as IcHome } from './ic_home.svg';
 export { default as IcCalendar } from './ic_calendar.svg';
