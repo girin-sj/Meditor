@@ -57,3 +57,6 @@ export { default as IcHeartEmpty } from './ic_heart_empty.svg';
 
 // ContactPlusModal
 export { default as IcCloseWhite } from './ic_close_white.svg';
+
+// Calendar
+export { default as IcHospital } from './ic_hospital.svg';
