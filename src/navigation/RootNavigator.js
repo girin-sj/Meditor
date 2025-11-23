@@ -6,9 +6,9 @@ import HomeScreen from '../screens/home/HomeScreen';
 import CalendarScreen from '../screens/calendar/CalendarScreen';
 import ContactsScreen from '../screens/contacts/ContactsScreen';
 import UserScreen from '../screens/user/UserScreen';
-import RecordScreen from '../screens/home/RecordScreen';
-import SummaryScreen from '../screens/home/SummaryScreen';
-import ScriptScreen from '../screens/home/ScriptScreen';
+import RecordScreen from '../screens/treat/RecordScreen';
+import SummaryScreen from '../screens/treat/SummaryScreen';
+import ScriptScreen from '../screens/treat/ScriptScreen';
 import {
   IcHome,
   IcCalendar,
