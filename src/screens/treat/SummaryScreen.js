@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     sectionWrap: {
         marginTop: 4,
         paddingHorizontal: 20,
+        paddingBottom: 50,
     },
     sectionTitle: {
         fontSize: 18,
