@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Pressable, StyleSheet, Dimensions } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { IcRecordStart, IcRecordStop, IcBack } from "@/assets/icons";
-
-const { width } = Dimensions.get("window");
+import { IcRecordStart, IcRecordStop, IcBack, IcWhiteBack } from "@/assets/icons";
 
 function RecordScreen({ navigation }) {
   const [isRecording, setIsRecording] = useState(false);
@@ -42,13 +41,21 @@ function RecordScreen({ navigation }) {
   };
 
   return (
-    <View style={[styles.container, 
-        { backgroundColor: isRecording ? "#1b3e83ff" : "#ffffff"  }
-    ]}>
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <LinearGradient
+      colors={
+        isRecording 
+          ? ['#1E56A0', '#1E549E', '#163172'] 
+          : ['#F6F6F6', '#E6EFF6']
+      }
+      start={{ x: 0, y: 0 }}
+      end={{ x: 0, y: 1 }}
+      style={{flex: 1}}
+    >
+    <SafeAreaView style={{flex: 1, backgroundColor: "transparent"}} edges={['top']}>
+      <View style={styles.container}>
       <View style={styles.header}>
         <Pressable style={styles.exitButton} onPress={handleExit}>
-          <IcBack color={isRecording ? "#ffffff" : "#1b3e83ff"} />
+          {isRecording ? <IcWhiteBack /> : <IcBack />}
           <Text style={[styles.exitText,
             { color: isRecording ? "#ffffff" : "#1b3e83ff" }
           ]}>나가기</Text>
@@ -82,10 +89,10 @@ function RecordScreen({ navigation }) {
             메디터가 같이 듣고 진료 내용을{"\n"}요약 정리해드릴게요
           </Text>
         )}
-
+      </View>
       </View>
       </SafeAreaView>
-    </View>
+    </LinearGradient>
   );
 }
 
