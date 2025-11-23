@@ -122,9 +122,10 @@ const styles = StyleSheet.create({
     width: '100%',
     flexDirection: 'row',
     backgroundColor: '#E6EFF6',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 6,
+    gap: 8,
   },
   headerItemWrapper: {
     position: 'relative',
