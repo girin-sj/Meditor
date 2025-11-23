@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet, Image } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { IcRecordStart, IcRecordStop, IcBack, IcWhiteBack } from "@/assets/icons";
+import IgWaves from "@/assets/images/ig_waves.png";
 
 function RecordScreen({ navigation }) {
   const [isRecording, setIsRecording] = useState(false);
@@ -51,6 +52,9 @@ function RecordScreen({ navigation }) {
       end={{ x: 0, y: 1 }}
       style={{flex: 1}}
     >
+    {isRecording && (
+      <Image source={IgWaves} style={styles.waves}/>
+    )}
     <SafeAreaView style={{flex: 1, backgroundColor: "transparent"}} edges={['top']}>
       <View style={styles.container}>
       <View style={styles.header}>
@@ -100,6 +104,15 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 16,
+    },
+    waves: {
+      position: "absolute",
+      top: "60%",
+      width:"100%",
+      height:150,
+      resizeMode: "contain",
+      zIndex: 0,
+      opacity: 0.9,
     },
     header: {
         width: "100%",
