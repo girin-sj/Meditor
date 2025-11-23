@@ -18,6 +18,7 @@ export { default as IcRecentTreat } from './ic_recent_treatment.svg';
 export { default as IcRecordStart } from './ic_record_start.svg';
 export { default as IcRecordStop } from './ic_record_stop.svg';
 export { default as IcBack } from './ic_back.svg';
+export { default as IcWhiteBack } from './ic_white_back.svg';
 
 // Summary
 export { default as IcVoiceRead } from './ic_voice_read.svg';
