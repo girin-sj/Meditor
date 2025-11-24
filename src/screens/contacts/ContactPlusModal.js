@@ -16,7 +16,14 @@ import { syncContacts } from '@/utils/contactSync';
 import CompleteView from '@/components/CompleteView';
 import Toast from '@/components/Toast';
 
-function ContactPlusModal({ visible, onClose, onAddContact, showToast, onToastHide, contacts }) {
+function ContactPlusModal({
+  visible,
+  onClose,
+  onAddContact,
+  showToast,
+  onToastHide,
+  contacts,
+}) {
   const [searchText, setSearchText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [showComplete, setShowComplete] = useState(false);
@@ -155,7 +162,14 @@ function ContactPlusModal({ visible, onClose, onAddContact, showToast, onToastHi
   );
 }
 
-const ContactItem = ({ profileSrc, nameTxt, isLast, isLoading, isAdded, onPress }) => {
+const ContactItem = ({
+  profileSrc,
+  nameTxt,
+  isLast,
+  isLoading,
+  isAdded,
+  onPress,
+}) => {
   return (
     <Pressable
       style={[styles.contactItem, !isLast && styles.contactItemBorder]}

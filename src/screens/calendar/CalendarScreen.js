@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { IcHospital, IcNote, IcRightBlack } from '@/assets/icons';
-import { getScheduleByDate, getMarkedDates } from './CalendarExampleData';
+import {
+  getScheduleByDate,
+  getMarkedDates,
+  addSchedule,
+} from './CalendarExampleData';
 import GradiBtn from '@/components/GradiBtn';
+import ScheduleModal from './ScheduleModal';
 
 // 한글 로케일 설정
 LocaleConfig.locales['kr'] = {
@@ -54,6 +59,7 @@ LocaleConfig.defaultLocale = 'kr';
 function CalendarScreen() {
   const todayDate = new Date().toISOString().split('T')[0];
   const [selectedDate, setSelectedDate] = useState(todayDate);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   // 일정이 있는 날짜들과 선택된 날짜를 함께 표시
   const [markedDates, setMarkedDates] = useState({
@@ -101,6 +107,22 @@ function CalendarScreen() {
     const dayName = dayNames[date.getDay()];
 
     return `${year}/${month}/${day}/${dayName}`;
+  };
+
+  // 일정 추가 핸들러
+  const handleAddSchedule = title => {
+    addSchedule(selectedDate, title);
+    // 마킹된 날짜 업데이트
+    const scheduledDates = getMarkedDates();
+    setMarkedDates({
+      ...scheduledDates,
+      [selectedDate]: {
+        selected: true,
+        selectedColor: '#4A90E2',
+        marked: true,
+        dotColor: '#DB3434',
+      },
+    });
   };
 
   return (
@@ -174,26 +196,39 @@ function CalendarScreen() {
         </View>
       )}
       <View style={styles.gradiContainer}>
-        <GradiBtn title={'일정 추가'} />
+        <GradiBtn title={'일정 추가'} onPress={() => setIsModalVisible(true)} />
       </View>
+      <ScheduleModal
+        visible={isModalVisible}
+        onClose={() => setIsModalVisible(false)}
+        onAdd={handleAddSchedule}
+        selectedDate={selectedDate}
+      />
     </SafeAreaView>
   );
 }
 
+const truncateText = (text, maxLength = 10) => {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + ' ···';
+  }
+  return text;
+};
+
 const TreatItem = ({ titleTxt, isLast }) => {
   return (
-    <View style={[styles.treatItem, !isLast && styles.treatItemBorder]}>
+    <Pressable style={[styles.treatItem, !isLast && styles.treatItemBorder]}>
       <View style={styles.treatLeft}>
         <View style={styles.treatIconWrapper}>
           <IcNote />
         </View>
         <Text style={styles.treatItemText}>
-          {titleTxt}
+          {truncateText(titleTxt)}
           {'  '}진료 요약
         </Text>
       </View>
       <IcRightBlack />
-    </View>
+    </Pressable>
   );
 };
 
@@ -204,9 +239,8 @@ const HospitalItem = ({ titleTxt, isLast }) => {
         <View style={styles.hospitalIconWrapper}>
           <IcHospital />
         </View>
-        <Text style={styles.treatItemText}>{titleTxt}</Text>
+        <Text style={styles.treatItemText}>{truncateText(titleTxt)}</Text>
       </View>
-      <IcRightBlack />
     </View>
   );
 };
