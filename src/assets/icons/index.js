@@ -60,3 +60,6 @@ export { default as IcCloseWhite } from './ic_close_white.svg';
 
 // Calendar
 export { default as IcHospital } from './ic_hospital.svg';
+
+// Contact Module
+export { default as IcCheck } from './ic_check.svg';

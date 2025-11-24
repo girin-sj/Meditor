@@ -1,40 +1,66 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  Pressable,
+  ActivityIndicator,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-
-import { 
+import { syncContacts } from '@/utils/contactSync';
+import {
   IcUser,
-  IcContactsImg, 
-  IcTreatSummary, 
+  IcContactsImg,
+  IcTreatSummary,
   IcBell,
-  IcSetting, 
-  IcNotice, 
-  IcCustomer, 
-  IcOpinion, 
-  IcMore, 
+  IcSetting,
+  IcNotice,
+  IcCustomer,
+  IcOpinion,
+  IcMore,
   IcInfomation,
-  IcRightBlack
+  IcRightBlack,
 } from '@/assets/icons';
 
 function UserScreen({ navigation }) {
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleLogout = () => {
-    navigation.navigate("Login");
-  }
+    navigation.navigate('Login');
+  };
+
+  // 연락처 연동 처리
+  const handleSyncContacts = async () => {
+    setIsLoading(true);
+    await syncContacts();
+    setIsLoading(false);
+  };
 
   return (
     <SafeAreaView style={styles.screen} edges={['top']}>
-      <ScrollView contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 16 }}>
+      <ScrollView
+        contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 16 }}
+      >
         <View style={styles.card}>
           <View style={{ flex: 1 }}>
             <Text style={styles.title}>연락처 쉽게 관리하기</Text>
             <Text style={styles.describe}>
               중요한 진료 요약을{'\n'}바로 공유할 수 있도록 연동을 완료해 주세요
             </Text>
-            <Pressable style={styles.contactBtn}>
-              <Text style={styles.contactBtnText}>연락처 연동하기</Text>
+            <Pressable
+              style={styles.contactBtn}
+              onPress={handleSyncContacts}
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <ActivityIndicator size="small" color="#000000" />
+              ) : (
+                <Text style={styles.contactBtnText}>연락처 연동하기</Text>
+              )}
             </Pressable>
           </View>
-          <IcContactsImg style={{ marginLeft: 8, alignSelf: "flex-end" }} />
+          <IcContactsImg style={{ marginLeft: 8, alignSelf: 'flex-end' }} />
         </View>
 
         <View style={styles.section}>
@@ -114,8 +140,8 @@ function UserScreen({ navigation }) {
 
           <Pressable style={styles.row}>
             <View style={{ flex: 1 }}>
-            <Text style={styles.versionMain}>버전 25.01.01</Text>
-            <Text style={styles.versionSub}>최신 버전을 사용중이에요</Text>
+              <Text style={styles.versionMain}>버전 25.01.01</Text>
+              <Text style={styles.versionSub}>최신 버전을 사용중이에요</Text>
             </View>
             <IcRightBlack />
           </Pressable>
@@ -125,7 +151,6 @@ function UserScreen({ navigation }) {
             <IcRightBlack />
           </Pressable>
         </View>
-
       </ScrollView>
     </SafeAreaView>
   );
@@ -134,20 +159,20 @@ function UserScreen({ navigation }) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: "#F7F8FA",
+    backgroundColor: '#F7F8FA',
   },
   card: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     padding: 20,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginTop: 8,
     marginBottom: 16,
   },
   title: {
     fontSize: 17,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   describe: {
     fontSize: 14,
@@ -155,50 +180,50 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   contactBtn: {
-    backgroundColor: "#E8EFF7",
+    backgroundColor: '#E8EFF7',
     paddingVertical: 10,
     paddingHorizontal: 25,
     borderRadius: 20,
-    alignSelf: "flex-start",
+    alignSelf: 'flex-start',
   },
   contactBtnText: {
-    color: "#000000",
-    fontWeight: "600",
+    color: '#000000',
+    fontWeight: '600',
   },
   section: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     paddingVertical: 5,
     marginBottom: 18,
   },
   sectionTitle: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     paddingVertical: 5,
     paddingHorizontal: 20,
   },
   row: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: 20,
     paddingVertical: 12,
   },
   nameRow: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     flex: 1,
   },
   profilerowText: {
     fontSize: 20,
     marginLeft: 12,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   profileState: {
     fontSize: 10,
-    fontWeight: "bold",
-    backgroundColor: "#1E56A0",
+    fontWeight: 'bold',
+    backgroundColor: '#1E56A0',
     borderRadius: 8,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     paddingVertical: 5,
     paddingHorizontal: 10,
     marginLeft: 8,
@@ -218,7 +243,7 @@ const styles = StyleSheet.create({
   },
   versionSub: {
     fontSize: 12,
-    color: "#777",
+    color: '#777',
   },
 });
 

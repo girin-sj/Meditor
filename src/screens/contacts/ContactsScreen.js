@@ -11,14 +11,16 @@ import Contact from './Contact';
 import Reception from './Reception';
 import GradiBtn from '@/components/GradiBtn';
 import ContactPlusModal from './ContactPlusModal';
-import { INITIAL_RECEPTION_ITEMS } from './ContactExampleData';
+import { INITIAL_RECEPTION_ITEMS, getContacts } from './ContactExampleData';
 
 function ContactsScreen() {
   const [selectedTab, setSelectedTab] = React.useState('contact');
   const [isModalVisible, setIsModalVisible] = React.useState(false);
+  const [contacts, setContacts] = React.useState(getContacts());
   const [receptionItems, setReceptionItems] = React.useState(
     INITIAL_RECEPTION_ITEMS,
   );
+  const [showToast, setShowToast] = React.useState(false);
 
   const newReceptionCount = receptionItems.filter(item => item.isNew).length;
 
@@ -28,6 +30,16 @@ function ContactsScreen() {
         item.id === id ? { ...item, isNew: false } : item,
       ),
     );
+  };
+
+  const handleAddContact = contact => {
+    const newContact = {
+      ...contact,
+      id: contacts.length > 0 ? Math.max(...contacts.map(c => c.id)) + 1 : 1,
+      isBookmarked: false,
+    };
+    setContacts(prevContacts => [...prevContacts, newContact]);
+    setShowToast(true);
   };
 
   return (
@@ -77,7 +89,9 @@ function ContactsScreen() {
           </View>
         </View>
         <View style={styles.contents}>
-          {selectedTab === 'contact' && <Contact />}
+          {selectedTab === 'contact' && (
+            <Contact contacts={contacts} setContacts={setContacts} />
+          )}
           {selectedTab === 'reception' && (
             <Reception
               receptionItems={receptionItems}
@@ -97,6 +111,10 @@ function ContactsScreen() {
       <ContactPlusModal
         visible={isModalVisible}
         onClose={() => setIsModalVisible(false)}
+        onAddContact={handleAddContact}
+        showToast={showToast}
+        onToastHide={() => setShowToast(false)}
+        contacts={contacts}
       />
     </SafeAreaView>
   );
@@ -161,6 +179,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   contents: {
+    flex: 1,
     width: '100%',
     paddingHorizontal: 12,
     paddingTop: 12,
