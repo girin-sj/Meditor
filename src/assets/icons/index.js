@@ -23,9 +23,12 @@ export { default as IcWhiteBack } from './ic_white_back.svg';
 // Summary
 export { default as IcVoiceRead } from './ic_voice_read.svg';
 export { default as IcShare } from './ic_share.svg';
+export { default as IcPauseBlue } from './ic_pause_blue.svg';
 
 // Script
 export { default as IcDoctor } from './ic_doctor.svg';
+export { default as IcVoiceReadWhite } from './ic_voice_read_white.svg';
+export { default as IcPause } from './ic_pause.svg';
 
 // Bottom Tab
 export { default as IcHome } from './ic_home.svg';
