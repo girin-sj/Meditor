@@ -1,5 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Pressable,
+  Image,
+  Linking,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   IcRightWhite,
@@ -11,6 +18,12 @@ import {
 import GradiBtn from '@/components/GradiBtn';
 
 function HomeScreen({ navigation }) {
+  const handleAdPress = () => {
+    Linking.openURL(
+      'https://www.kgcshop.co.kr/index?gad_source=1&gad_campaignid=22306303119&gbraid=0AAAAADMVBU9mQWx-7chaq2WhfSVGn-CkW&gclid=EAIaIQobChMIqpWlp6-LkQMVyAV7Bx3u5Ai6EAAYASAAEgLcY_D_BwE',
+    );
+  };
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.header}>
@@ -19,7 +32,7 @@ function HomeScreen({ navigation }) {
           <View style={styles.notificationBadge} />
         </View>
       </View>
-      <Pressable style={styles.adContainer}>
+      <Pressable style={styles.adContainer} onPress={handleAdPress}>
         <Text style={styles.adTxt}>
           오늘 하루 수고하신 부모님께,
           <Text style={styles.adTxtBold}> 정관장 홍삼정 20% 세일</Text>

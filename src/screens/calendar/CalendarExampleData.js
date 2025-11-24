@@ -1,12 +1,12 @@
 // 날짜별 일정 데이터
-export const CALENDAR_SCHEDULE_DATA = {
+let CALENDAR_SCHEDULE_DATA = {
   '2025-10-22': [{ id: 3, type: 'treat', title: '허리 디스크' }],
   '2025-10-27': [{ id: 3, type: 'treat', title: '허리 디스크' }],
   '2025-11-07': [{ id: 7, type: 'treat', title: '어깨 회전근개 파열' }],
   '2025-11-10': [{ id: 5, type: 'treat', title: '목 통증' }],
   '2025-11-14': [{ id: 8, type: 'treat', title: '오십견' }],
   '2025-11-21': [{ id: 10, type: 'treat', title: '오십견' }],
-  '2025-11-23': [
+  '2025-11-25': [
     { id: 11, type: 'treat', title: '발목 염좌' },
     { id: 12, type: 'hospital', title: '정형외과 11시' },
   ],
@@ -34,4 +34,19 @@ export const getMarkedDates = () => {
     };
   });
   return marked;
+};
+
+// 일정 추가하기
+export const addSchedule = (dateString, title) => {
+  const newSchedule = {
+    id: Date.now(),
+    type: 'hospital',
+    title: title,
+  };
+
+  if (CALENDAR_SCHEDULE_DATA[dateString]) {
+    CALENDAR_SCHEDULE_DATA[dateString].push(newSchedule);
+  } else {
+    CALENDAR_SCHEDULE_DATA[dateString] = [newSchedule];
+  }
 };
