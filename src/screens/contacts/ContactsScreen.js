@@ -13,7 +13,7 @@ import GradiBtn from '@/components/GradiBtn';
 import ContactPlusModal from './ContactPlusModal';
 import { INITIAL_RECEPTION_ITEMS, getContacts } from './ContactExampleData';
 
-function ContactsScreen() {
+function ContactsScreen({ navigation }) {
   const [selectedTab, setSelectedTab] = React.useState('contact');
   const [isModalVisible, setIsModalVisible] = React.useState(false);
   const [contacts, setContacts] = React.useState(getContacts());
@@ -96,6 +96,7 @@ function ContactsScreen() {
             <Reception
               receptionItems={receptionItems}
               onItemPress={handleReceptionItemPress}
+              navigation={navigation}
             />
           )}
         </View>

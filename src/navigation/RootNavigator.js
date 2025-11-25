@@ -63,7 +63,7 @@ function MainTabs() {
       />
       <Tab.Screen
         name="ContactsTab"
-        component={ContactsScreen}
+        component={ContactStackScreen}
         options={{
           tabBarIcon: ({ focused }) =>
             focused ? <IcContactsOn /> : <IcContacts />,
@@ -95,6 +95,16 @@ function CalendarStackScreen() {
   return(
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
+      <Stack.Screen name="SummaryScreen" component={SummaryScreen} />
+      <Stack.Screen name="ScriptScreen" component={ScriptScreen} />
+    </Stack.Navigator>
+  )
+}
+
+function ContactStackScreen() {
+  return(
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="ContactsScreen" component={ContactsScreen} />
       <Stack.Screen name="SummaryScreen" component={SummaryScreen} />
       <Stack.Screen name="ScriptScreen" component={ScriptScreen} />
     </Stack.Navigator>

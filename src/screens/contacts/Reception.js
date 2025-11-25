@@ -2,7 +2,12 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, Pressable } from 'react-native';
 import { IcRightBlack } from '@/assets/icons';
 
-function Reception({ receptionItems, onItemPress }) {
+function Reception({ receptionItems, onItemPress, navigation }) {
+
+  const handleItemPress = (id) => {
+    navigation.navigate('SummaryScreen', {id, hideScript: true });
+  };
+
   return (
     <View style={styles.container}>
       {receptionItems.map((item, index) => (
@@ -13,7 +18,10 @@ function Reception({ receptionItems, onItemPress }) {
           dateTxt={item.dateTxt}
           isNew={item.isNew}
           isLast={index === receptionItems.length - 1}
-          onPress={() => onItemPress(item.id)}
+          onPress={() => {
+            onItemPress(item.id);
+            handleItemPress(item.id, item.isNew);
+          }}
         />
       ))}
     </View>
