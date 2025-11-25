@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, Pressable } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Pressable, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { launchCamera } from 'react-native-image-picker';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import {
   IcShare,
   IcVoiceRead,
@@ -30,6 +30,9 @@ function SummaryScreen({ route, navigation }) {
 
   useEffect(() => {
     // TTS 초기 설정
+    Tts.setDefaultLanguage('ko-KR');
+    Tts.setDefaultRate(0.5);
+    
     Tts.addEventListener('tts-start', () => setIsSpeaking(true));
     Tts.addEventListener('tts-finish', () => setIsSpeaking(false));
     Tts.addEventListener('tts-cancel', () => setIsSpeaking(false));
@@ -38,7 +41,7 @@ function SummaryScreen({ route, navigation }) {
       Tts.removeAllListeners('tts-start');
       Tts.removeAllListeners('tts-finish');
       Tts.removeAllListeners('tts-cancel');
-
+      Tts.stop();
     };
   }, []);
 
@@ -60,9 +63,36 @@ function SummaryScreen({ route, navigation }) {
     });
   };
 
+  const handleSelectGallery = () => {
+    const options = {
+        mediaType:'photo',
+        selectionLimit: 1.
+    };
+     launchImageLibrary(options, response => {
+    if (response.didCancel) {
+      console.log('갤러리 선택 취소됨');
+    } else if (response.errorMessage) {
+      console.log('갤러리 에러:', response.errorMessage);
+    } else {
+      console.log('갤러리 선택 성공:', response.assets[0]);
+      setPhotoTaken(true);
+    }
+  });
+  };
+
+  const handleSelect = () => {
+    Alert.alert(
+        "처방전 사진 추가","사진을 입력방식을 선택하시오",[
+            {text: "촬영", onPress:handleOpenCamera},
+            {text: "갤러리", onPress:handleSelectGallery},
+            {text: "취소", style:"cancel"}
+        ]
+    )
+  }
+
   const handleSpeak = () => {
     if (isSpeaking) {
-
+      Tts.stop();
     } else {
       // 진료 요약 내용을 텍스트로 변환
       let fullText = `${treatData.title}. ${treatData.subtitle}. `;
@@ -132,7 +162,7 @@ function SummaryScreen({ route, navigation }) {
               <View style={styles.section}>
                 <GradiBtn
                   title={'처방전 입력하기'}
-                  onPress={handleOpenCamera}
+                  onPress={handleSelect}
                 />
               </View>
             </>
