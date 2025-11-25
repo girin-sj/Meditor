@@ -13,7 +13,7 @@ import { INITIAL_TREAT } from './TreatExampleData';
 import Tts from 'react-native-tts';
 
 function SummaryScreen({ route, navigation }) {
-  const { id, isNew } = route.params || {};
+  const { id, isNew, hideScript } = route.params || {};
   const treatData =
     INITIAL_TREAT.find(item => item.id === id) || INITIAL_TREAT[0];
   const [photoTaken, setPhotoTaken] = useState(false);
@@ -21,7 +21,7 @@ function SummaryScreen({ route, navigation }) {
 
   useEffect(() => {
     if (!isNew) {
-      if (treatData.prescriptions?.length > 0) {
+        if (treatData.prescriptions?.length > 0) {
         setPhotoTaken(true);
       }
     }
@@ -174,6 +174,7 @@ function SummaryScreen({ route, navigation }) {
           </View>
         </View>
       </ScrollView>
+      {!hideScript && (
       <Pressable
         style={styles.adContainer}
         activeOpacity={0.7}
@@ -184,6 +185,7 @@ function SummaryScreen({ route, navigation }) {
         </Text>
         <IcRightWhite />
       </Pressable>
+      )}
     </SafeAreaView>
   );
 }

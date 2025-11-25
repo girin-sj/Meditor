@@ -10,7 +10,7 @@ let CALENDAR_SCHEDULE_DATA = {
     { id: 11, type: 'treat', title: '발목 염좌', treatId: 12 },
     { id: 12, type: 'hospital', title: '정형외과 11시' },
   ],
-  '2025-11-27': [{ id: 13, type: 'treat', title: '재활의학과 2시' }],
+  '2025-11-27': [{ id: 13, type: 'hospital', title: '재활의학과 2시' }],
   '2025-11-30': [
     { id: 14, type: 'hospital', title: '재활의학과 2시' },
     { id: 15, type: 'hospital', title: '골다공증 검진' },
