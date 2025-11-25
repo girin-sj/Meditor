@@ -2,12 +2,12 @@
 let CALENDAR_SCHEDULE_DATA = {
   '2025-10-22': [{ id: 3, type: 'treat', title: '허리 디스크' }],
   '2025-10-27': [{ id: 3, type: 'treat', title: '허리 디스크' }],
-  '2025-11-07': [{ id: 7, type: 'treat', title: '어깨 회전근개 파열' }],
+  '2025-11-07': [{ id: 7, type: 'treat', title: '어깨 회전근개 파열', treatId: 11 }],
   '2025-11-10': [{ id: 5, type: 'treat', title: '목 통증' }],
-  '2025-11-14': [{ id: 8, type: 'treat', title: '오십견' }],
-  '2025-11-21': [{ id: 10, type: 'treat', title: '오십견' }],
+  '2025-11-14': [{ id: 8, type: 'treat', title: '오십견', treatId: 1}],
+  '2025-11-21': [{ id: 10, type: 'treat', title: '오십견', treatId: 1}],
   '2025-11-25': [
-    { id: 11, type: 'treat', title: '발목 염좌' },
+    { id: 11, type: 'treat', title: '발목 염좌', treatId: 12 },
     { id: 12, type: 'hospital', title: '정형외과 11시' },
   ],
   '2025-11-27': [{ id: 13, type: 'treat', title: '재활의학과 2시' }],
