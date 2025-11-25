@@ -13,17 +13,23 @@ import { INITIAL_TREAT } from './TreatExampleData';
 import Tts from 'react-native-tts';
 
 function SummaryScreen({ route, navigation }) {
-  const { id } = route.params || {};
+  const { id, isNew } = route.params || {};
   const treatData =
     INITIAL_TREAT.find(item => item.id === id) || INITIAL_TREAT[0];
   const [photoTaken, setPhotoTaken] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   useEffect(() => {
-    // TTS 초기 설정
-    Tts.setDefaultLanguage('ko-KR');
-    Tts.setDefaultRate(0.5);
+    if (!isNew) {
+      if (treatData.prescriptions?.length > 0) {
+        setPhotoTaken(true);
+      }
+    }
+  }, [isNew, treatData]);
 
+
+  useEffect(() => {
+    // TTS 초기 설정
     Tts.addEventListener('tts-start', () => setIsSpeaking(true));
     Tts.addEventListener('tts-finish', () => setIsSpeaking(false));
     Tts.addEventListener('tts-cancel', () => setIsSpeaking(false));
@@ -32,7 +38,7 @@ function SummaryScreen({ route, navigation }) {
       Tts.removeAllListeners('tts-start');
       Tts.removeAllListeners('tts-finish');
       Tts.removeAllListeners('tts-cancel');
-      Tts.stop();
+
     };
   }, []);
 
@@ -56,7 +62,7 @@ function SummaryScreen({ route, navigation }) {
 
   const handleSpeak = () => {
     if (isSpeaking) {
-      Tts.stop();
+
     } else {
       // 진료 요약 내용을 텍스트로 변환
       let fullText = `${treatData.title}. ${treatData.subtitle}. `;
@@ -81,7 +87,7 @@ function SummaryScreen({ route, navigation }) {
         fullText += `${item}. `;
       });
 
-      Tts.speak(fullText);
+
     }
   };
 
@@ -171,7 +177,7 @@ function SummaryScreen({ route, navigation }) {
       <Pressable
         style={styles.adContainer}
         activeOpacity={0.7}
-        onPress={() => navigation.navigate('ScriptScreen', { id: 1 })}
+        onPress={() => navigation.navigate('ScriptScreen', { id })}
       >
         <Text style={styles.adTxt}>
           어떤 대화가 오갔나요? <Text style={styles.adTxtBold}>전문 보기</Text>
