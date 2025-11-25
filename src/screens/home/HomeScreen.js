@@ -73,8 +73,14 @@ function HomeScreen({ navigation }) {
           />
         </View>
         <View style={styles.treatListContainer}>
-          <TreatItem dateTxt={'10/31 (금)'} />
-          <TreatItem dateTxt={'10/16 (목)'} />
+          <Pressable
+            onPress={() => navigation.navigate('SummaryScreen', {id: 2})}>
+            <TreatItem dateTxt={'10/31 (금)'} />
+          </Pressable>
+          <Pressable
+            onPress={() => navigation.navigate('SummaryScreen', {id: 3})}>
+            <TreatItem dateTxt={'10/16 (목)'} />
+          </Pressable>
           <TreatItem dateTxt={'09/22 (월)'} isLast />
         </View>
       </View>

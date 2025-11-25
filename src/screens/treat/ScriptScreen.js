@@ -12,8 +12,7 @@ function ScriptScreen({ route, navigation }) {
 
   useEffect(() => {
     // TTS 초기 설정
-    Tts.setDefaultLanguage('ko-KR');
-    Tts.setDefaultRate(0.5);
+
 
     Tts.addEventListener('tts-start', () => setIsSpeaking(true));
     Tts.addEventListener('tts-finish', () => setIsSpeaking(false));
@@ -23,18 +22,18 @@ function ScriptScreen({ route, navigation }) {
       Tts.removeAllListeners('tts-start');
       Tts.removeAllListeners('tts-finish');
       Tts.removeAllListeners('tts-cancel');
-      Tts.stop();
+
     };
   }, []);
 
   const handleExit = () => {
-    Tts.stop();
+
     navigation.navigate('SummaryScreen');
   };
 
   const handleSpeak = () => {
     if (isSpeaking) {
-      Tts.stop();
+
     } else {
       // 대화 내용을 텍스트로 변환
       const fullText = conversation

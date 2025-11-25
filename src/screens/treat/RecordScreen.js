@@ -22,6 +22,7 @@ function RecordScreen({ navigation }) {
 
     navigation.navigate("SummaryScreen", {
         recordedDuration: seconds,
+        isNew: true,
     });
   };
 
