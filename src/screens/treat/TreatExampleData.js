@@ -478,6 +478,45 @@ export const SCRIPT_DIABETES = [
     }
 ];
 
+export const SCRIPT_ASTHMA = [
+  {
+    id: 1,
+    speaker: "doctor",
+    message: "호흡곤란이나 쌕쌕거리는 숨소리가 자주 나타나시나요?"
+  },
+  {
+    id: 2,
+    speaker: "patient",
+    message: "네, 숨이 차고 밤에 특히 더 심해요."
+  },
+  {
+    id: 3,
+    speaker: "doctor",
+    message: "진찰해보니 기도에 염증이 있고 숨 쉴 때 약간의 천명음이 들립니다."
+  },
+  {
+    id: 4,
+    speaker: "doctor",
+    message: "천식이 의심됩니다.",
+    keyword: "천식"
+  },
+  {
+    id: 5,
+    speaker: "patient",
+    message: "천식이면 평생 관리해야 하나요?"
+  },
+  {
+    id: 6,
+    speaker: "doctor",
+    message: "증상 조절이 중요하고, 꾸준한 관리와 약물치료를 병행하면 충분히 일상생활 가능합니다."
+  },
+  {
+    id: 7,
+    speaker: "doctor",
+    message: "증상 완화를 위해 흡입제 처방해드릴게요."
+  }
+];
+
 export const SCRIPT_GERD = [
     {
         id: 1,
@@ -727,12 +766,13 @@ export const SCRIPT_MAP = {
     1: SCRIPT_FROZEN_SHOULDER,
     2: SCRIPT_HYPERTENSION,
     3: SCRIPT_DIABETES,
-    4: SCRIPT_GERD,
-    5: SCRIPT_MIGRAINE,
-    6: SCRIPT_PNEUMONIA,
-    7: SCRIPT_UTI,
-    8: SCRIPT_ANGINA,
-    9: SCRIPT_LUMBAR_DISC,
-    10: SCRIPT_ROTATOR_CUFF,
-    11: SCRIPT_ANKLE_SPRAIN
+    4: SCRIPT_ASTHMA,
+    5: SCRIPT_GERD,
+    6: SCRIPT_MIGRAINE,
+    7: SCRIPT_PNEUMONIA,
+    8: SCRIPT_UTI,
+    9: SCRIPT_ANGINA,
+    10: SCRIPT_LUMBAR_DISC,
+    11: SCRIPT_ROTATOR_CUFF,
+    12: SCRIPT_ANKLE_SPRAIN
 };

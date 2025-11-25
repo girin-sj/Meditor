@@ -56,7 +56,7 @@ LocaleConfig.locales['kr'] = {
 
 LocaleConfig.defaultLocale = 'kr';
 
-function CalendarScreen() {
+function CalendarScreen({ navigation }) {
   const todayDate = new Date().toISOString().split('T')[0];
   const [selectedDate, setSelectedDate] = useState(todayDate);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -177,6 +177,8 @@ function CalendarScreen() {
                   key={schedule.id}
                   titleTxt={schedule.title}
                   isLast={isLast}
+                  navigation={navigation}
+                  treatId={schedule.treatId}
                 />
               );
             } else {
@@ -215,9 +217,11 @@ const truncateText = (text, maxLength = 10) => {
   return text;
 };
 
-const TreatItem = ({ titleTxt, isLast }) => {
+const TreatItem = ({ titleTxt, isLast, navigation, treatId }) => {
   return (
-    <Pressable style={[styles.treatItem, !isLast && styles.treatItemBorder]}>
+    <Pressable 
+      style={[styles.treatItem, !isLast && styles.treatItemBorder]}
+      onPress={() => navigation.navigate('SummaryScreen', { id: treatId })}>
       <View style={styles.treatLeft}>
         <View style={styles.treatIconWrapper}>
           <IcNote />

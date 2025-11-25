@@ -55,7 +55,7 @@ function MainTabs() {
       />
       <Tab.Screen
         name="CalendarTab"
-        component={CalendarScreen}
+        component={CalendarStackScreen}
         options={{
           tabBarIcon: ({ focused }) =>
             focused ? <IcCalendarOn /> : <IcCalendar />,
@@ -89,6 +89,16 @@ function HomeStackScreen() {
       <Stack.Screen name="ScriptScreen" component={ScriptScreen} />
     </Stack.Navigator>
   );
+}
+
+function CalendarStackScreen() {
+  return(
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
+      <Stack.Screen name="SummaryScreen" component={SummaryScreen} />
+      <Stack.Screen name="ScriptScreen" component={ScriptScreen} />
+    </Stack.Navigator>
+  )
 }
 
 function RootNavigator() {
