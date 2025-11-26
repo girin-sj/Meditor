@@ -21,6 +21,7 @@ function RecordScreen({ navigation }) {
     setSeconds(0);
 
     navigation.navigate("SummaryScreen", {
+        id: 1,
         recordedDuration: seconds,
         isNew: true,
     });
@@ -104,7 +105,8 @@ function RecordScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 16,
+        paddingHorizontal: 25,
+        paddingVertical: 30
     },
     waves: {
       position: "absolute",

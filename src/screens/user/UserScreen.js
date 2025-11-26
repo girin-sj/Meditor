@@ -40,7 +40,7 @@ function UserScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.screen} edges={['top']}>
       <ScrollView
-        contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 16 }}
+        contentContainerStyle={{ paddingBottom: 40, paddingHorizontal: 16, paddingVertical: 35 }}
       >
         <View style={styles.card}>
           <View style={{ flex: 1 }}>
